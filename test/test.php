@@ -4,7 +4,7 @@ set_include_path(
 	get_include_path() . PATH_SEPARATOR .
 	__DIR__ . DIRECTORY_SEPARATOR . 'lib' . PATH_SEPARATOR .
 	__DIR__ . DIRECTORY_SEPARATOR . 'test' . DIRECTORY_SEPARATOR . 'lib' . PATH_SEPARATOR .
-	__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR
+	dirname(__DIR__) . DIRECTORY_SEPARATOR
 );
 
 ## Configure a simple auto-loader
@@ -15,5 +15,5 @@ $loader->register();
 $loader2 = new SplClassLoader(null, 'test/lib');
 $loader2->register();
 
-$runner = new xTestRunner(__DIR__ . DIRECTORY_SEPARATOR . 'lib');
+$runner = new xTestRunner(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'application');
 $runner->run(__DIR__ . DIRECTORY_SEPARATOR . 'suite' . DIRECTORY_SEPARATOR . '*.test.php');
