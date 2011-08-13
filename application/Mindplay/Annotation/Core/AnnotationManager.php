@@ -173,11 +173,6 @@ class AnnotationManager
 	 */
 	protected function getAnnotationCache($path)
 	{
-		if (!file_exists($this->cachePath)) {
-			@mkdir($this->cachePath, 0777);
-			@chmod($this->cachePath, 0777);
-		}
-
 		return $this->cachePath . DIRECTORY_SEPARATOR . basename($path) . '-' . sprintf('%x', crc32($path . $this->cacheSeed)) . '.annotations.php';
 	}
 
