@@ -13,21 +13,36 @@
 
 namespace Mindplay\Annotation\Standard;
 
+use Mindplay\Annotation\Core\AnnotationException;
+
 use Mindplay\Annotation\Core\IAnnotationParser;
 use Mindplay\Annotation\Core\Annotation;
 
 /**
  * Defines a method-parameter's type
+ *
+ * @usage('method'=>true, 'inherited'=>true, 'multiple'=>true)
  */
 class ParamAnnotation extends Annotation implements IAnnotationParser
 {
+	/**
+	 * @var string
+	 */
+	public $type;
 
 	/**
-	 * Parse the standard PHP-DOC @var annotation
+	 * @var string
+	 */
+	public $name;
+
+	/**
+	 * Parse the standard PHP-DOC @param annotation
 	 */
 	public static function parseAnnotation($value)
 	{
-		return array();
+		$parts = explode(' ', trim($value), 3);
+
+		return array('type' => $parts[0], 'name' => substr($parts[1], 1));
 	}
 
 	/**
@@ -35,5 +50,16 @@ class ParamAnnotation extends Annotation implements IAnnotationParser
 	 */
 	public function initAnnotation($properties)
 	{
+		$this->_map($properties, array('type', 'name'));
+
+		parent::initAnnotation($properties);
+
+		if (!isset($this->type)) {
+			throw new AnnotationException('ParamAnnotation requires a type property');
+		}
+
+		if (!isset($this->name)) {
+			throw new AnnotationException('ParamAnnotation requires a name property');
+		}
 	}
 }
