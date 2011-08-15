@@ -423,27 +423,28 @@ class AnnotationManager
 	 */
 	public function getMethodAnnotations($class, $method = null, $type = null)
 	{
-		if (is_object($class))
+		if ($class instanceof ReflectionClass) {
+			$class = $class->getName();
+		} elseif ($class instanceof ReflectionMethod) {
+			$method = $class->name;
+			$class = $class->class;
+		} elseif (is_object($class)) {
 			$class = get_class($class);
-		else
-			if ($class instanceof ReflectionClass)
-				$class = $class->getName();
-			else
-				if ($class instanceof ReflectionMethod) {
-					$method = $class->name;
-					$class = $class->class;
-				}
+		}
 
-		if (!class_exists($class, $this->autoload))
+		if (!class_exists($class, $this->autoload)) {
 			throw new AnnotationException(__CLASS__ . "::getMethodAnnotations() : undefined class {$class}");
+		}
 
-		if (!method_exists($class, $method))
+		if (!method_exists($class, $method)) {
 			throw new AnnotationException(__CLASS__ . "::getMethodAnnotations() : undefined method {$class}::{$method}()");
+		}
 
-		if ($type === null)
+		if ($type === null) {
 			return $this->getAnnotations($class, 'method', $method);
-		else
+		} else {
 			return $this->filterAnnotations($this->getAnnotations($class, 'method', $method), $type);
+		}
 	}
 
 	/**
