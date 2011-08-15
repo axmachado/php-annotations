@@ -11,7 +11,7 @@
  * <http://code.google.com/p/php-annotations>
  */
 
-namespace Annotation\Lib;
+namespace Mindplay\Annotation\Standard;
 
 use Mindplay\Annotation\Core\Annotation;
 use Mindplay\Annotation\Core\AnnotationException;
