@@ -13,13 +13,13 @@
 
 namespace Mindplay\Annotation\Standard;
 
+use Mindplay\Annotation\Core\Annotation;
+
 /**
  * Indicates whether a property should be user-editable or not.
  *
  * @usage('property'=>true, 'inherited'=>true)
  */
-use Mindplay\Annotation\Core\Annotation;
-
 class EditableAnnotation extends Annotation
 {
 	/**
