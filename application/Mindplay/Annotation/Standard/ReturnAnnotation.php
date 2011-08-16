@@ -51,7 +51,5 @@ class ReturnAnnotation extends Annotation implements IAnnotationParser
 		if (!isset($this->type)) {
 			throw new AnnotationException('ReturnAnnotation requires a type property');
 		}
-
-		$this->type = strtolower($this->type);
 	}
 }
