@@ -14,7 +14,6 @@
 namespace Mindplay\Annotation\Standard;
 
 use Mindplay\Annotation\Core\AnnotationException;
-
 use Mindplay\Annotation\Core\IAnnotationParser;
 use Mindplay\Annotation\Core\Annotation;
 
