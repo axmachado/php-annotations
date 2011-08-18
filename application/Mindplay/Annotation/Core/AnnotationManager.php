@@ -79,6 +79,7 @@ class AnnotationManager
 		'todo' => false,
 		'tutorial' => false,
 		'uses' => false,
+		'throws' => false,
 		'display' => 'Mindplay\Annotation\Standard\DisplayAnnotation',
 		'editable' => 'Mindplay\Annotation\Standard\EditableAnnotation',
 		'editor' => 'Mindplay\Annotation\Standard\EditorAnnotation',
