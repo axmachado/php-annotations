@@ -13,6 +13,8 @@
 
 namespace Mindplay\Annotation\Core;
 
+use Mindplay\Annotation\Core\AnnotationException;
+
 /**
  * Thin, static class with shortcut methods for inspection of Annotations
  */
@@ -80,5 +82,25 @@ abstract class Annotations
 	public static function ofProperty($class, $property = null, $type = null)
 	{
 		return self::getManager()->getPropertyAnnotations($class, $property, $type);
+	}
+
+	/**
+	 * Creates a new annotation alias
+	 *
+	 * @param string $alias
+	 * @param string $class
+	 * @throws Mindplay\Annotation\Core\AnnotationException
+	 */
+	public static function addAlias($alias, $class)
+	{
+	    $manager = self::getManager();
+
+	    $alias = lcfirst($alias);
+
+	    if (isset($manager->registry[$alias])) {
+	        throw new AnnotationException('This alias is alredy being used.');
+	    }
+
+        self::getManager()->registry[$alias] = $class;
 	}
 }

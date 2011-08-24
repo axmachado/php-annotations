@@ -10,10 +10,10 @@ set_include_path(
 ## Configure a simple auto-loader
 require 'demo/SplClassLoader.php';
 
-$loader = new SplClassLoader(null, 'application');
+$loader = new SplClassLoader(null, 'src');
 $loader->register();
 $loader2 = new SplClassLoader(null, 'test/lib');
 $loader2->register();
 
-$runner = new xTestRunner(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'application');
+$runner = new xTestRunner(dirname(__DIR__) . DIRECTORY_SEPARATOR . 'src');
 $runner->run(__DIR__ . DIRECTORY_SEPARATOR . 'suite' . DIRECTORY_SEPARATOR . '*.test.php');

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package packagerversion="1.9.4" version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.0     http://pear.php.net/dtd/package-2.0.xsd">
+ <name>Annotation</name>
+ <channel>lcobucci.github.com</channel>
+ <summary>Industrial-strength annotations for PHP</summary>
+ <description>Small annotations library for PHP.
+Light, fast and easy to use</description>
+ <lead>
+  <name>Rasmus Schultz</name>
+  <user>mindplay</user>
+  <email>rasmus@mindplay.dk</email>
+  <active>yes</active>
+ </lead>
+ <developer>
+  <name>Luís Otávio Cobucci Oblonczyk</name>
+  <user>lcobucci</user>
+  <email>lcobucci@gmail.com</email>
+  <active>yes</active>
+ </developer>
+ <date>2011-08-24</date>
+ <time>03:05:16</time>
+ <version>
+  <release>0.1.0</release>
+  <api>0.1.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.gnu.org/licenses/lgpl.html">LGPL</license>
+ <notes>
+Library created
+ </notes>
+ <contents>
+  <dir baseinstalldir="Mindplay/Annotation" name="/">
+   <file baseinstalldir="Mindplay/Annotation" md5sum="e9b65940e82d5fd5721cec64711c4522" name="Core/Annotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="11ed25ab1f331e8f05fa2e0b5067d4be" name="Core/AnnotationException.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="7ce19fc5dd0482dbc56f12d4aa8a4600" name="Core/AnnotationManager.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="967fd6891a5e2f44757c49377229ec8d" name="Core/AnnotationParser.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="2250c4e8213391db2e179d9da68b4c3a" name="Core/Annotations.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="ea1887634b8d974e8aa97edd622ef88e" name="Core/IAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="e4536615ae827bf8aa0c3c93ee342f73" name="Core/IAnnotationParser.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="8159038ee8bd7d0c534787933c27517d" name="Core/UsageAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="7e1f731acafe2631866b0ce76a542317" name="Standard/DisplayAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="3d1b3d61e1c28d3e1b33f8c0c6877d77" name="Standard/EditableAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="6cc845ed89f213bf77d1b4f86d55ad98" name="Standard/EditorAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="e0eefa116f67d346ef525f6af94217af" name="Standard/EnumAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="60cec093c112e9ae5f2e15ebdc8400a4" name="Standard/FormatAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="eed1d25454625600e1f535d46000510f" name="Standard/LengthAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="831f3fd472d57ab1a77a75df436177f0" name="Standard/MatchAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="6d7ffc95249dca8eda020e9d8cbbfdbd" name="Standard/MethodAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="ed2044d5e14a75bc872b0ba50b424634" name="Standard/ParamAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="af4b23836d3e3fbe13ad1e5526b0e77b" name="Standard/PropertyAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="6a5c69c00ef83fc7fb0fd80077fe0125" name="Standard/PropertyReadAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="23717864435870c8b6738023e1808366" name="Standard/PropertyWriteAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="25b87865366d534a432f5bfbe39207ec" name="Standard/RangeAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="d1036fa267bcadb02500050777dc0692" name="Standard/RequiredAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="32569e35e3e1818f043c6416f8a02ccb" name="Standard/ReturnAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="6324b434705629cd96507a9524b3daf9" name="Standard/TextAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="ace2ccdc3598098107dc80a045019107" name="Standard/ValidateAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="d3a0fc0bee02cfff543a32ecbc52f6d3" name="Standard/ValidationAnnotationBase.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="346601ee697df4aa46899b307d82bdfb" name="Standard/VarAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="f48977684a51a71102821bf9131ef296" name="Standard/ViewAnnotation.php" role="php" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.3</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.0</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <phprelease />
+ <changelog>
+  <release>
+   <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2011-08-24</date>
+   <license uri="http://www.gnu.org/licenses/lgpl.html">LGPL</license>
+   <notes>
+Library created
+   </notes>
+  </release>
+ </changelog>
+</package>

@@ -3,7 +3,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../');
 
 require 'demo/SplClassLoader.php';
 
-$loader = new SplClassLoader(null, 'application');
+$loader = new SplClassLoader(null, 'src');
 $loader->register();
 
 use Mindplay\Annotation\Core\Annotations;

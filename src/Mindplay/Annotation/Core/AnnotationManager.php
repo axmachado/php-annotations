@@ -225,7 +225,7 @@ class AnnotationManager
 
 		$type = lcfirst($name);
 
-		if (@$this->registry[$type] === false) {
+		if (isset($this->registry[$type]) && $this->registry[$type] === false) {
 			return false; // annotation is disabled
 		}
 
