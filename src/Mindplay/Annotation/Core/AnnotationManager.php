@@ -281,8 +281,9 @@ class AnnotationManager
 				foreach ($specs[$key] as $spec) {
 					$type = array_shift($spec);
 
-					if (!class_exists($type, $this->autoload))
+					if (!class_exists($type, $this->autoload)) {
 						throw new AnnotationException(__CLASS__ . "::getAnnotations() : annotation type {$type} not found");
+					}
 
 					$annotation = new $type();
 
@@ -311,15 +312,15 @@ class AnnotationManager
 	 * @param array An array of IAnnotation objects to be validated.
 	 * @param string The type of member to validate against (e.g. "class", "property" or "method")
 	 */
-	protected function applyConstraints(&$annotations, $member)
+	protected function applyConstraints(array &$annotations, $member)
 	{
 		foreach ($annotations as $outer => $annotation) {
 			$type = get_class($annotation);
-
 			$usage = $this->getUsage($type);
 
-			if (!$usage->$member)
+			if (!$usage->$member) {
 				throw new AnnotationException(__CLASS__ . "::getAnnotations() : {$type} cannot be applied to a {$member}");
+			}
 
 			if (!$usage->multiple) {
 				foreach ($annotations as $inner => $other) {
@@ -369,12 +370,14 @@ class AnnotationManager
 	 */
 	public function getUsage($class)
 	{
-		if ($class == 'Mindplay\Annotation\Core\UsageAnnotation')
+		if ($class == 'Mindplay\Annotation\Core\UsageAnnotation') {
 			return $this->_usageAnnotation;
+		}
 
 		if (!isset($this->usage[$class])) {
-			if (!class_exists($class, $this->autoload))
+			if (!class_exists($class, $this->autoload)) {
 				throw new AnnotationException(__CLASS__ . "::getUsage() : undefined Annotation type '{$class}'");
+			}
 
 			$usage = $this->getAnnotations($class);
 
@@ -385,10 +388,11 @@ class AnnotationManager
 					throw new AnnotationException(__CLASS__ . "::getUsage() : the class '{$class}' must have exactly one UsageAnnotation");
 				}
 			} else {
-				if (count($usage) !== 1 || !($usage[0] instanceof UsageAnnotation))
+				if (count($usage) !== 1 || !($usage[0] instanceof UsageAnnotation)) {
 					throw new AnnotationException(__CLASS__ . "::getUsage() : the class '{$class}' must have exactly one UsageAnnotation (no other Annotations are allowed)");
-				else
+				} else {
 					$usage = $usage[0];
+				}
 			}
 
 			$this->usage[$class] = $usage;
@@ -413,13 +417,15 @@ class AnnotationManager
 			$class = get_class($class);
 		}
 
-		if (!class_exists($class, $this->autoload))
+		if (!class_exists($class, $this->autoload)) {
 			throw new AnnotationException(__CLASS__ . "::getClassAnnotations() : undefined class {$class}");
+		}
 
-		if ($type === null)
+		if ($type === null) {
 			return $this->getAnnotations($class);
-		else
+		} else {
 			return $this->filterAnnotations($this->getAnnotations($class), $type);
+		}
 	}
 
 	/**
@@ -480,9 +486,10 @@ class AnnotationManager
 		if (!class_exists($class, $this->autoload))
 			throw new AnnotationException(__CLASS__ . "::getPropertyAnnotations() : undefined class {$class}");
 
-		if ($type === null)
+		if ($type === null) {
 			return $this->getAnnotations($class, 'property', '$' . $property);
-		else
+		} else {
 			return $this->filterAnnotations($this->getAnnotations($class, 'property', '$' . $property), $type);
+		}
 	}
 }
