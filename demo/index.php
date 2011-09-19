@@ -6,7 +6,7 @@ require 'demo/SplClassLoader.php';
 $loader = new SplClassLoader(null, 'src');
 $loader->register();
 
-use \Mindplay\Annotation\Cache\FileCache;
+use \Mindplay\Annotation\Cache\ApcCache;
 use \Mindplay\Annotation\Core\Annotations;
 
 ## Configure the cache-path. The static `Annotations` class will configure any public
@@ -15,7 +15,7 @@ use \Mindplay\Annotation\Core\Annotations;
 ## annotations from individual source code files.
 
 
-Annotations::$config['cache'] = new FileCache(__DIR__ . '/runtime');
+Annotations::$config['cache'] = new ApcCache();
 
 ## For this example, we're going to generate a simple form that allows us to edit a `Person`
 ## object. We'll define a few public properties and annotate them with some useful metadata,
