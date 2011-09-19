@@ -12,8 +12,7 @@
 
 namespace Mindplay\Annotation\Core;
 
-use Mindplay\Annotation\Cache\CacheStorageNotConfiguredException;
-
+use \Mindplay\Annotation\Cache\CacheStorageNotConfiguredException;
 use \Mindplay\Annotation\Cache\FileCache;
 use \ReflectionClass;
 use \ReflectionMethod;
