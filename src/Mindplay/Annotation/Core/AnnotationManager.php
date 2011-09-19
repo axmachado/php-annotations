@@ -12,8 +12,9 @@
 
 namespace Mindplay\Annotation\Core;
 
-use Mindplay\Annotation\Cache\FileCache;
+use Mindplay\Annotation\Cache\CacheStorageNotConfiguredException;
 
+use \Mindplay\Annotation\Cache\FileCache;
 use \ReflectionClass;
 use \ReflectionMethod;
 use \ReflectionProperty;
@@ -29,16 +30,6 @@ class AnnotationManager
 	public $autoload = true;
 
 	/**
-	 * @var string Absolute path to a folder where cache files may be saved
-	 */
-	public $cachePath = null;
-
-	/**
-	 * @var string Cache seed (can be used to disambiguate, if using multiple AnnotationManager instances with the same $cachePath)
-	 */
-	public $cacheSeed = '';
-
-	/**
 	 * @var string The class-name suffix for Annotation classes.
 	 */
 	public $suffix = 'Annotation';
@@ -49,9 +40,9 @@ class AnnotationManager
 	public $namespace = '';
 
 	/**
-	 * @var \Mindplay\Annotation\CacheStorage
+	 * @var \Mindplay\Annotation\Cache\CacheStorage
 	 */
-	private $cache;
+	public $cache;
 
 	/**
 	 * @var array List of registered annotation aliases.
@@ -165,24 +156,6 @@ class AnnotationManager
 	}
 
 	/**
-	 * @param string $path The full path to the source code file for which to calculate a cache path
-	 * @return string The path to the annotation cache file for the given path
-	 */
-	protected function getAnnotationCache($path)
-	{
-		return $this->cachePath . DIRECTORY_SEPARATOR . basename($path) . '-' . sprintf('%x', crc32($path . $this->cacheSeed)) . '.annotations.php';
-	}
-
-	protected function getCache()
-	{
-		if (is_null($this->cache)) {
-			$this->cache = new FileCache($this->cachePath, $this->cacheSeed);
-		}
-
-		return $this->cache;
-	}
-
-	/**
 	 * Retrieves all Annotation specifications for a given source code file.
 	 *
 	 * @param string $class The class to retrieve the annotations
@@ -194,22 +167,37 @@ class AnnotationManager
 		$path = $reflection->getFileName();
 
 		if (!isset($this->specs[$path])) {
-			if (!is_null($this->cachePath)) {
-				$cache = $this->getCache();
-				$cacheId = $cache->createId($reflection);
-
-				if (!$cache->exists($cacheId) || filemtime($path) > $cache->getLastChangeTime($cacheId)) {
-					$cache->store($cacheId, $this->getParser()->parseFile($path));
-				}
-
-				$this->specs[$path] = $cache->get($cacheId);
-			} else {
-				trigger_error(__METHOD__ . " : AnnotationManager::\$cachePath is not configured", E_USER_NOTICE);
+			try {
+				$this->specs[$path] = $this->getFromCache($reflection, $path);
+			} catch (CacheStorageNotConfiguredException $e) {
+				trigger_error($e->getMessage(), E_USER_NOTICE);
 				$this->specs[$path] = eval($this->getParser()->parseFile($path));
 			}
 		}
 
 		return $this->specs[$path];
+	}
+
+	/**
+	 * @param ReflectionClass $reflection
+	 * @param string $filePath
+	 * @return mixed
+	 */
+	protected function getFromCache(ReflectionClass $reflection, $filePath)
+	{
+		if (is_null($this->cache)) {
+			throw new CacheStorageNotConfiguredException(
+				__METHOD__ . " : AnnotationManager::\$cache is not configured"
+			);
+		}
+
+		$cacheId = $this->cache->createId($reflection);
+
+		if (!$this->cache->exists($cacheId) || filemtime($filePath) > $this->cache->getLastChangeTime($cacheId)) {
+			$this->cache->store($cacheId, $this->getParser()->parseFile($filePath));
+		}
+
+		return $this->cache->get($cacheId);
 	}
 
 	/**
@@ -323,8 +311,9 @@ class AnnotationManager
 
 			if (!$usage->multiple) {
 				foreach ($annotations as $inner => $other) {
-					if ($inner >= $outer)
+					if ($inner >= $outer) {
 						break;
+					}
 
 					if ($other instanceof $type) {
 						if ($usage->inherited) {
@@ -482,8 +471,9 @@ class AnnotationManager
 			$class = get_class($class);
 		}
 
-		if (!class_exists($class, $this->autoload))
+		if (!class_exists($class, $this->autoload)) {
 			throw new AnnotationException(__CLASS__ . "::getPropertyAnnotations() : undefined class {$class}");
+		}
 
 		if ($type === null) {
 			return $this->getAnnotations($class, 'property', '$' . $property);

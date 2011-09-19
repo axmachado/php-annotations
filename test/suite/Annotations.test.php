@@ -2,10 +2,11 @@
 require_once 'suite/Annotations.case.php';
 require_once 'suite/Annotations.Sample.case.php';
 
-use Mindplay\Annotation\Core\AnnotationException;
-use Mindplay\Annotation\Core\AnnotationParser;
-use Mindplay\Annotation\Core\AnnotationManager;
-use Mindplay\Annotation\Core\Annotations;
+use \Mindplay\Annotation\Cache\FileCache;
+use \Mindplay\Annotation\Core\AnnotationException;
+use \Mindplay\Annotation\Core\AnnotationParser;
+use \Mindplay\Annotation\Core\AnnotationManager;
+use \Mindplay\Annotation\Core\Annotations;
 
 /**
  * This class implements tests for core annotations
@@ -16,11 +17,11 @@ class AnnotationsTest extends xTest
   {
     Annotations::$config = array(
       'autoload' => false, // not using an autoloader during unit tests
-      'cachePath' => dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'runtime', // turn caching on (or else AnnotationManager will generate E_NOTICE)
+      'cache' => new FileCache(dirname(__DIR__).DIRECTORY_SEPARATOR.'runtime'), // turn caching on (or else AnnotationManager will generate E_NOTICE)
     );
 
     // manually wipe out the cache:
-    foreach (glob(Annotations::getManager()->cachePath.DIRECTORY_SEPARATOR.'*.annotations.php') as $path)
+    foreach (glob(Annotations::getManager()->cache->path.DIRECTORY_SEPARATOR.'*.annotations.php') as $path)
       unlink($path);
   }
 
@@ -241,8 +242,7 @@ class AnnotationsTest extends xTest
     $manager = new AnnotationManager();
     $manager->namespace = 'Sample';
     $manager->autoload = false;
-    $manager->cachePath = Annotations::getManager()->cachePath;
-    $manager->cacheSeed = 'abc123';
+    $manager->cache = new FileCache(Annotations::getManager()->cache->path, 'abc123');
 
     $anns = $manager->getClassAnnotations('Sample\AnnotationInDefaultNamespace', 'Sample\SampleAnnotation');
 
@@ -254,8 +254,7 @@ class AnnotationsTest extends xTest
     $manager = new AnnotationManager();
     $manager->namespace = 'Sample';
     $manager->autoload = false;
-    $manager->cachePath = Annotations::getManager()->cachePath;
-    $manager->cacheSeed = 'xyz';
+    $manager->cache = new FileCache(Annotations::getManager()->cache->path, 'xyz');
 
     $manager->registry['ignored'] = false;
 
@@ -269,8 +268,7 @@ class AnnotationsTest extends xTest
     $manager = new AnnotationManager();
     $manager->namespace = 'Sample';
     $manager->autoload = false;
-    $manager->cachePath = Annotations::getManager()->cachePath;
-    $manager->cacheSeed = '12345678';
+    $manager->cache = new FileCache(Annotations::getManager()->cache->path, '12345678');
 
     $manager->registry['aliased'] = 'Sample\SampleAnnotation';
 
