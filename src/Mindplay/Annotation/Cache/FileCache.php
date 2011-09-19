@@ -83,7 +83,7 @@ class FileCache implements CacheStorage
 	 */
 	public function getLastChangeTime($id)
 	{
-		 return filemtime($this->resolveCacheFile($id));
+		return filemtime($this->resolveCacheFile($id));
 	}
 
 	/**
