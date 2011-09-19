@@ -18,10 +18,10 @@ Light, fast and easy to use</description>
   <active>yes</active>
  </developer>
  <date>2011-09-19</date>
- <time>10:25:38</time>
+ <time>13:12:19</time>
  <version>
-  <release>0.2.0</release>
-  <api>0.2.0</api>
+  <release>0.2.1</release>
+  <api>0.2.1</api>
  </version>
  <stability>
   <release>beta</release>
@@ -33,13 +33,13 @@ Changed the way to cache the class metadata
  </notes>
  <contents>
   <dir baseinstalldir="Mindplay/Annotation" name="/">
-   <file baseinstalldir="Mindplay/Annotation" md5sum="0b19caa26d5f2e32b49a8c85f7244f3e" name="Cache/ApcCache.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="2177dbeafcf3805f3ae5edd156a20228" name="Cache/ApcCache.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="21b2b46dd2eeac95c48009a312fdd555" name="Cache/CacheStorage.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="974b3b9ce222df006538be9de3dad65f" name="Cache/CacheStorageNotConfiguredException.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="1bd820b6254b59f288d965d2b67e29ee" name="Cache/FileCache.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="e9b65940e82d5fd5721cec64711c4522" name="Core/Annotation.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="11ed25ab1f331e8f05fa2e0b5067d4be" name="Core/AnnotationException.php" role="php" />
-   <file baseinstalldir="Mindplay/Annotation" md5sum="14e97b5b856905f4bb914644b7cf4487" name="Core/AnnotationManager.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="7e6218ba30b1aa58c925dca48771eea7" name="Core/AnnotationManager.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="967fd6891a5e2f44757c49377229ec8d" name="Core/AnnotationParser.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="2250c4e8213391db2e179d9da68b4c3a" name="Core/Annotations.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="ea1887634b8d974e8aa97edd622ef88e" name="Core/IAnnotation.php" role="php" />
@@ -98,6 +98,21 @@ Library created
    <version>
     <release>0.2.0</release>
     <api>0.2.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2011-09-19</date>
+   <license uri="http://www.gnu.org/licenses/lgpl.html">LGPL</license>
+   <notes>
+Changed the way to cache the class metadata
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2.1</release>
+    <api>0.2.1</api>
    </version>
    <stability>
     <release>beta</release>
