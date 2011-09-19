@@ -25,7 +25,7 @@ class ApcCache implements CacheStorage
 	 */
 	public function store($id, $content)
 	{
-		if (apc_store($id, $content) === false) {
+		if (apc_store($id, eval($content)) === false) {
 			throw new AnnotationException(__METHOD__ . ' : error writing cache ' . $id);
 		}
 	}
@@ -40,7 +40,7 @@ class ApcCache implements CacheStorage
 	{
 		$content = apc_fetch($id);
 
-		return eval($content);
+		return $content;
 	}
 
 	/**
