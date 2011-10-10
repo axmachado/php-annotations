@@ -17,11 +17,11 @@ Light, fast and easy to use</description>
   <email>lcobucci@gmail.com</email>
   <active>yes</active>
  </developer>
- <date>2011-09-19</date>
- <time>13:12:19</time>
+ <date>2011-10-10</date>
+ <time>13:28:00</time>
  <version>
-  <release>0.2.1</release>
-  <api>0.2.1</api>
+  <release>0.2.2</release>
+  <api>0.2.2</api>
  </version>
  <stability>
   <release>beta</release>
@@ -29,11 +29,12 @@ Light, fast and easy to use</description>
  </stability>
  <license uri="http://www.gnu.org/licenses/lgpl.html">LGPL</license>
  <notes>
-Changed the way to cache the class metadata
+* Validates if the APC extension exists
+* __toString() method added on @return and @param
  </notes>
  <contents>
   <dir baseinstalldir="Mindplay/Annotation" name="/">
-   <file baseinstalldir="Mindplay/Annotation" md5sum="2177dbeafcf3805f3ae5edd156a20228" name="Cache/ApcCache.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="1d3627280aead4004c2da9ef1fd437d2" name="Cache/ApcCache.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="21b2b46dd2eeac95c48009a312fdd555" name="Cache/CacheStorage.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="974b3b9ce222df006538be9de3dad65f" name="Cache/CacheStorageNotConfiguredException.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="1bd820b6254b59f288d965d2b67e29ee" name="Cache/FileCache.php" role="php" />
@@ -53,13 +54,13 @@ Changed the way to cache the class metadata
    <file baseinstalldir="Mindplay/Annotation" md5sum="eed1d25454625600e1f535d46000510f" name="Standard/LengthAnnotation.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="831f3fd472d57ab1a77a75df436177f0" name="Standard/MatchAnnotation.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="6d7ffc95249dca8eda020e9d8cbbfdbd" name="Standard/MethodAnnotation.php" role="php" />
-   <file baseinstalldir="Mindplay/Annotation" md5sum="ed2044d5e14a75bc872b0ba50b424634" name="Standard/ParamAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="a68224be09d5c39cf5b215e432c0ee0d" name="Standard/ParamAnnotation.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="af4b23836d3e3fbe13ad1e5526b0e77b" name="Standard/PropertyAnnotation.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="6a5c69c00ef83fc7fb0fd80077fe0125" name="Standard/PropertyReadAnnotation.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="23717864435870c8b6738023e1808366" name="Standard/PropertyWriteAnnotation.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="25b87865366d534a432f5bfbe39207ec" name="Standard/RangeAnnotation.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="d1036fa267bcadb02500050777dc0692" name="Standard/RequiredAnnotation.php" role="php" />
-   <file baseinstalldir="Mindplay/Annotation" md5sum="32569e35e3e1818f043c6416f8a02ccb" name="Standard/ReturnAnnotation.php" role="php" />
+   <file baseinstalldir="Mindplay/Annotation" md5sum="39c8644b392fa184b607171e292f9d38" name="Standard/ReturnAnnotation.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="6324b434705629cd96507a9524b3daf9" name="Standard/TextAnnotation.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="ace2ccdc3598098107dc80a045019107" name="Standard/ValidateAnnotation.php" role="php" />
    <file baseinstalldir="Mindplay/Annotation" md5sum="d3a0fc0bee02cfff543a32ecbc52f6d3" name="Standard/ValidationAnnotationBase.php" role="php" />
@@ -122,6 +123,22 @@ Changed the way to cache the class metadata
    <license uri="http://www.gnu.org/licenses/lgpl.html">LGPL</license>
    <notes>
 Changed the way to cache the class metadata
+   </notes>
+  </release>
+  <release>
+   <version>
+    <release>0.2.2</release>
+    <api>0.2.2</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2011-10-10</date>
+   <license uri="http://www.gnu.org/licenses/lgpl.html">LGPL</license>
+   <notes>
+* Validates if the APC extension exists
+* __toString() method added on @return and @param
    </notes>
   </release>
  </changelog>
