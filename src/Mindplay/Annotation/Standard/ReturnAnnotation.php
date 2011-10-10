@@ -52,4 +52,12 @@ class ReturnAnnotation extends Annotation implements IAnnotationParser
 			throw new AnnotationException('ReturnAnnotation requires a type property');
 		}
 	}
+
+	/**
+	 * @return string
+	 */
+	public function __toString()
+	{
+		return '@return ' . $this->type;
+	}
 }

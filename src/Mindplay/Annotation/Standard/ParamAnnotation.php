@@ -61,4 +61,12 @@ class ParamAnnotation extends Annotation implements IAnnotationParser
 			throw new AnnotationException('ParamAnnotation requires a name property');
 		}
 	}
+
+	/**
+	 * @return string
+	 */
+	public function __toString()
+	{
+		return '@param ' . $this->type . ' $' . $annotation->name;
+	}
 }
