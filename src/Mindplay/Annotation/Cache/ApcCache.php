@@ -7,6 +7,20 @@ use \ReflectionClass;
 class ApcCache implements CacheStorage
 {
 	/**
+	 * Class constructor
+	 *
+	 * @throws AnnotationException
+	 */
+	public function __construct()
+	{
+		if (!extension_loaded('apc')) {
+			throw new AnnotationException(
+				'You must have APC extension in order to use the APC cache storage'
+			);
+		}
+	}
+
+	/**
 	 * Returns if the identifier exists on the storage
 	 *
 	 * @param string $id
