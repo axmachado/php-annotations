@@ -68,8 +68,15 @@ class ApcCache implements CacheStorage
 		$info = apc_cache_info('user');
 
 		foreach ($info['cache_list'] as $cache) {
-			if ($cache['info'] == $id) {
+			$key = 'info';
+			if (!array_key_exists($key, $cache)) {
+				$key = 'key';
+			}
+			if (array_key_exists($key, $cache) && $cache[$key] == $id) {
 				return $cache['mtime'];
+			}
+			else {
+				return 0;
 			}
 		}
 	}
@@ -85,3 +92,4 @@ class ApcCache implements CacheStorage
 		return $class->getName() . '-annotations';
 	}
 }
+
