@@ -86,7 +86,12 @@ class ApcCache implements CacheStorage
                     $key = $cache['info'];
                 }
                 if ($key == $id) {
-                    return $cache['mtime'];
+                    if (isset($cache['modification_time'])) {
+                        return $cache['modification_time'];
+                    }
+                    else {
+                        return $cache['mtime'];
+                    }
                 }
             }
         }
