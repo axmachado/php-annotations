@@ -1,0 +1,17 @@
+{
+    "name": "softnex/php-annotations",
+    "description": "PHP Annotations modificado pelo Luis.",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Luís Otávio Cobucci Oblonczyk",
+            "email": "lcobucci@gmail.com"
+        },
+        {
+            "name": "Alexandre Machado",
+            "email": "alexandre@softnex.com.br"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
