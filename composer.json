@@ -1,8 +1,12 @@
 {
     "name": "softnex/php-annotations",
     "description": "PHP Annotations modificado pelo Luis.",
-    "license": "proprietary",
+    "license": "LGPL-3.0+",
     "authors": [
+        {
+            "name": "Rasmus Schultz",
+            "email": "rasmus@mindplay.dk"
+        },
         {
             "name": "Luís Otávio Cobucci Oblonczyk",
             "email": "lcobucci@gmail.com"
@@ -13,5 +17,8 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {}
+    "require": {},
+    "autoload" : {
+        "psr-0" : { "" : "src" }
+    }
 }
